@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <radialGradient id="ecglow" cx="0.5" cy="0.55" r="0.55">
+      <stop offset="0" stop-color="#B85C2B" stop-opacity="0.8"/>
+      <stop offset="1" stop-color="#1A1A1A" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="ecsteam">
+      <feGaussianBlur stdDeviation="10"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="900" fill="#1A1A1A"/>
+  <rect width="1200" height="900" fill="url(#ecglow)"/>
+  <!-- counter -->
+  <rect x="0" y="640" width="1200" height="260" fill="#4A3920"/>
+  <g stroke="#2E2418" stroke-width="2" opacity="0.5">
+    <line x1="0" y1="700" x2="1200" y2="700"/>
+    <line x1="0" y1="760" x2="1200" y2="760"/>
+    <line x1="0" y1="820" x2="1200" y2="820"/>
+  </g>
+  <!-- claypot -->
+  <g transform="translate(440 400)">
+    <ellipse cx="160" cy="240" rx="180" ry="40" fill="#1A1A1A"/>
+    <path d="M0 240 Q0 80 160 60 Q320 80 320 240 Z" fill="#6E5430"/>
+    <ellipse cx="160" cy="64" rx="120" ry="20" fill="#B85C2B"/>
+    <ellipse cx="160" cy="60" rx="100" ry="14" fill="#9B5821"/>
+    <!-- steam -->
+    <g filter="url(#ecsteam)" opacity="0.7">
+      <path d="M100 40 Q120 -20 140 -60 Q120 -100 160 -140" stroke="#F2EDE0" stroke-width="14" fill="none"/>
+      <path d="M180 40 Q200 -10 180 -60 Q200 -100 180 -140" stroke="#F2EDE0" stroke-width="14" fill="none"/>
+      <path d="M220 40 Q240 0 220 -60" stroke="#F2EDE0" stroke-width="12" fill="none"/>
+    </g>
+  </g>
+  <!-- spice bowls -->
+  <g transform="translate(120 580)">
+    <ellipse cx="50" cy="60" rx="50" ry="14" fill="#1A1A1A"/>
+    <ellipse cx="50" cy="50" rx="46" ry="10" fill="#B85C2B"/>
+  </g>
+  <g transform="translate(960 580)">
+    <ellipse cx="50" cy="60" rx="50" ry="14" fill="#1A1A1A"/>
+    <ellipse cx="50" cy="50" rx="46" ry="10" fill="#5B6B4F"/>
+  </g>
+</svg>

@@ -1,26 +1,241 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* Brand palette — A-frame, twilight, fairy-light glow */
+  --color-midnight: #0E1018;
+  --color-midnight-deep: #06080F;
+  --color-midnight-soft: #181B27;
+  --color-dusk: #2A1F38;
+  --color-dusk-soft: #3A2A48;
+  --color-amber: #E8A14B;
+  --color-amber-bright: #F6B863;
+  --color-amber-deep: #B97323;
+  --color-honey: #C8884A;
+  --color-cream: #F4EEDE;
+  --color-cream-soft: #FAF6EB;
+  --color-concrete: #9B9A93;
+  --color-concrete-soft: #C7C5BD;
+  --color-ember: #C5462A;
+  --color-charcoal: #1A1A1A;
+
+  /* Typography — architectural serif + grotesque body */
+  --font-display: var(--font-fraunces), "Fraunces", "Iowan Old Style", Georgia, serif;
+  --font-body: var(--font-geist), "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-prose: var(--font-sora), "Sora", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), "Geist Mono", ui-monospace, monospace;
+
+  /* Editorial scale */
+  --text-display: clamp(3.5rem, 9vw, 8.5rem);
+  --text-headline: clamp(2.25rem, 5vw, 4.75rem);
+  --text-eyebrow: 0.7rem;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    background: var(--color-midnight);
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  body {
+    background: var(--color-midnight);
+    color: var(--color-cream);
+    font-family: var(--font-body);
+    font-feature-settings: "ss01", "cv01", "cv11";
+  }
+
+  p {
+    font-family: var(--font-prose);
+  }
+
+  ::selection {
+    background: var(--color-amber);
+    color: var(--color-midnight);
+  }
+
+  *:focus-visible {
+    outline: 2px solid var(--color-amber);
+    outline-offset: 3px;
+    border-radius: 2px;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  .eyebrow {
+    font-family: var(--font-body);
+    font-size: var(--text-eyebrow);
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+  }
+
+  .display {
+    font-family: var(--font-display);
+    font-weight: 400;
+    line-height: 0.92;
+    letter-spacing: -0.025em;
+    font-variation-settings: "opsz" 96, "SOFT" 30;
+  }
+
+  .headline {
+    font-family: var(--font-display);
+    font-weight: 400;
+    line-height: 0.98;
+    letter-spacing: -0.02em;
+    font-variation-settings: "opsz" 72, "SOFT" 30;
+  }
+
+  .lede {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.35;
+    letter-spacing: -0.005em;
+    font-variation-settings: "opsz" 30, "SOFT" 100;
+  }
+
+  .rule {
+    display: inline-block;
+    width: 2.5rem;
+    height: 1px;
+    background: currentColor;
+    vertical-align: middle;
+  }
+
+  .vertical-mark {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    font-size: 0.65rem;
+    font-weight: 500;
+  }
+
+  /* Subtle film grain for warm-low-light feel */
+  .grain::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.05;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.9'/></svg>");
+  }
+
+  /* Amber glow used for fairy-light moments */
+  .glow-amber {
+    box-shadow:
+      0 0 0 1px rgba(232, 161, 75, 0.35),
+      0 0 28px rgba(232, 161, 75, 0.18),
+      0 0 80px rgba(232, 161, 75, 0.08);
+  }
+
+  /* Marquee — paired tracks, seamless loop on translateX(-50%) of the wrapper */
+  @keyframes marquee-x {
+    from { transform: translate3d(0, 0, 0); }
+    to   { transform: translate3d(-50%, 0, 0); }
+  }
+  .marquee-track {
+    animation: marquee-x linear infinite;
+    will-change: transform;
+  }
+  .marquee-pause:hover .marquee-track { animation-play-state: paused; }
+  .marquee-slow { animation-duration: 80s; }
+  .marquee-med  { animation-duration: 55s; }
+  .marquee-fast { animation-duration: 32s; }
+  /* Soft edge fade so items don't snap in/out */
+  .marquee-mask {
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 6%, #000 94%, transparent 100%);
+            mask-image: linear-gradient(to right, transparent 0, #000 6%, #000 94%, transparent 100%);
+  }
+
+  /* Experiences layout — rail on desktop with motion, grid otherwise */
+  .exp-grid { display: block; }
+  .exp-rail { display: none; }
+  @media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
+    .exp-grid { display: none; }
+    .exp-rail { display: flex; }
+  }
+
+  /* Fairy lights — A-frame silhouette motif */
+  @keyframes fairy-twinkle {
+    0%, 100% { opacity: 0.45; transform: scale(0.94); }
+    50%      { opacity: 1;    transform: scale(1.08); }
+  }
+  @keyframes fairy-draw {
+    from { stroke-dasharray: 0 200; }
+    to   { stroke-dasharray: 200 0; }
+  }
+  .fairy-bulb {
+    transform-origin: center;
+    transform-box: fill-box;
+    animation: fairy-twinkle 3.8s ease-in-out infinite;
+    will-change: opacity, transform;
+  }
+  .fairy-strand {
+    stroke-dasharray: 200 0;
+    animation: fairy-draw 2.4s ease-out both;
+  }
+  .fairy-strand-right { animation-delay: 0.2s; }
+
+  /* Drop-cap for editorial body copy (About) */
+  .dropcap {
+    float: left;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-style: italic;
+    font-size: 4.6rem;
+    line-height: 0.82;
+    margin: 0.28rem 0.45rem 0 0;
+    color: var(--color-amber);
+    font-variation-settings: "opsz" 96, "SOFT" 100;
+  }
+
+  /* Scrapbook gallery — pinned-photo feel */
+  .scrapbook-card {
+    transform: rotate(var(--mobile-rotate, 0deg));
+    transition:
+      transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 0.6s ease;
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.04) inset,
+      0 12px 28px -16px rgba(0, 0, 0, 0.55),
+      0 2px 6px rgba(0, 0, 0, 0.35);
+  }
+  .scrapbook-card:hover,
+  .scrapbook-card:focus-visible {
+    transform: rotate(0deg) translateY(-4px);
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.05) inset,
+      0 24px 48px -20px rgba(0, 0, 0, 0.65),
+      0 4px 10px rgba(0, 0, 0, 0.4),
+      0 0 0 1px rgba(232, 161, 75, 0.25);
+  }
+  @media (min-width: 1024px) {
+    .scrapbook-desktop .scrapbook-card {
+      transform: rotate(var(--card-rotate, 0deg));
+    }
+    .scrapbook-desktop .scrapbook-figure {
+      margin-top: var(--card-offset, 0px);
+    }
+    .scrapbook-desktop .scrapbook-card:hover,
+    .scrapbook-desktop .scrapbook-card:focus-visible {
+      transform: rotate(0deg) translateY(-6px);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  .marquee-track { animation: none !important; }
+  .scrapbook-card,
+  .scrapbook-desktop .scrapbook-card { transform: none !important; }
+  .fairy-bulb { animation: none !important; opacity: 0.85; transform: none; }
+  .fairy-strand { animation: none !important; stroke-dasharray: none; }
 }

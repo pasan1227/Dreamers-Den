@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1F2D24"/>
+      <stop offset="0.45" stop-color="#3D4F40"/>
+      <stop offset="0.78" stop-color="#7C8773"/>
+      <stop offset="1" stop-color="#D9D2BF"/>
+    </linearGradient>
+    <linearGradient id="far" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2B3C30"/>
+      <stop offset="1" stop-color="#536656"/>
+    </linearGradient>
+    <linearGradient id="mid" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1F2D24"/>
+      <stop offset="1" stop-color="#2B3C30"/>
+    </linearGradient>
+    <radialGradient id="sun" cx="0.78" cy="0.32" r="0.35">
+      <stop offset="0" stop-color="#F2EDE0" stop-opacity="0.4"/>
+      <stop offset="1" stop-color="#F2EDE0" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="mist" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur stdDeviation="14"/>
+    </filter>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#sky)"/>
+  <rect width="1920" height="1080" fill="url(#sun)"/>
+  <!-- distant ridge -->
+  <path d="M0 720 L160 660 L320 690 L520 620 L740 680 L960 600 L1180 670 L1400 610 L1620 680 L1920 640 L1920 1080 L0 1080 Z" fill="url(#far)" opacity="0.85"/>
+  <!-- mid ridge -->
+  <path d="M0 820 L220 760 L420 800 L660 720 L900 790 L1140 740 L1380 800 L1620 740 L1920 790 L1920 1080 L0 1080 Z" fill="url(#mid)" opacity="0.92"/>
+  <!-- near ridge -->
+  <path d="M0 940 L260 880 L520 920 L820 860 L1120 910 L1400 870 L1700 910 L1920 880 L1920 1080 L0 1080 Z" fill="#14201A"/>
+  <!-- mist bands -->
+  <g filter="url(#mist)" opacity="0.55">
+    <ellipse cx="600" cy="780" rx="420" ry="22" fill="#D9D2BF"/>
+    <ellipse cx="1300" cy="820" rx="500" ry="20" fill="#D9D2BF"/>
+    <ellipse cx="960" cy="900" rx="650" ry="18" fill="#F2EDE0"/>
+  </g>
+  <!-- cabin silhouette -->
+  <g transform="translate(1380 820)">
+    <path d="M0 0 L90 -70 L180 0 L180 100 L0 100 Z" fill="#1A1A1A"/>
+    <rect x="70" y="20" width="40" height="60" fill="#B85C2B" opacity="0.85"/>
+    <rect x="20" y="30" width="30" height="22" fill="#9B7A4A" opacity="0.7"/>
+    <rect x="130" y="30" width="30" height="22" fill="#9B7A4A" opacity="0.7"/>
+  </g>
+</svg>

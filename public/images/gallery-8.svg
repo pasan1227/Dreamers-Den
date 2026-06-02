@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="g8sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F8F4E9"/>
+      <stop offset="1" stop-color="#D9D2BF"/>
+    </linearGradient>
+    <filter id="g8m" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur stdDeviation="22"/>
+    </filter>
+  </defs>
+  <rect width="1600" height="900" fill="url(#g8sky)"/>
+  <!-- ridges fading into mist -->
+  <path d="M0 460 L200 400 L420 440 L660 380 L900 430 L1140 390 L1380 430 L1600 410 L1600 600 L0 600 Z" fill="#7C8773" opacity="0.45"/>
+  <path d="M0 540 L240 480 L500 520 L760 460 L1020 510 L1280 470 L1600 510 L1600 700 L0 700 Z" fill="#5B6B4F" opacity="0.65"/>
+  <path d="M0 660 L300 580 L600 620 L900 560 L1200 610 L1500 570 L1600 610 L1600 900 L0 900 Z" fill="#3D4F40"/>
+  <path d="M0 780 L400 700 L800 760 L1200 680 L1600 740 L1600 900 L0 900 Z" fill="#1F2D24"/>
+  <g filter="url(#g8m)" opacity="0.75">
+    <ellipse cx="600" cy="600" rx="700" ry="40" fill="#F2EDE0"/>
+    <ellipse cx="1200" cy="650" rx="600" ry="30" fill="#F2EDE0"/>
+    <ellipse cx="400" cy="720" rx="500" ry="24" fill="#F2EDE0"/>
+  </g>
+</svg>

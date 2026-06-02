@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="ceiling" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2E2418"/>
+      <stop offset="1" stop-color="#6E5430"/>
+    </linearGradient>
+    <linearGradient id="back" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#9B7A4A"/>
+      <stop offset="1" stop-color="#6E5430"/>
+    </linearGradient>
+    <radialGradient id="warm" cx="0.5" cy="0.4" r="0.5">
+      <stop offset="0" stop-color="#B85C2B" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#B85C2B" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#back)"/>
+  <!-- a-frame ceiling -->
+  <polygon points="0,0 600,400 1200,0" fill="url(#ceiling)"/>
+  <!-- beams -->
+  <g stroke="#2E2418" stroke-width="10" stroke-linecap="square">
+    <line x1="0" y1="0" x2="600" y2="400"/>
+    <line x1="1200" y1="0" x2="600" y2="400"/>
+    <line x1="200" y1="0" x2="600" y2="270"/>
+    <line x1="1000" y1="0" x2="600" y2="270"/>
+    <line x1="400" y1="0" x2="600" y2="135"/>
+    <line x1="800" y1="0" x2="600" y2="135"/>
+  </g>
+  <!-- window at peak -->
+  <polygon points="500,150 600,80 700,150 700,250 500,250" fill="#1F2D24"/>
+  <polygon points="500,150 600,80 700,150 700,250 500,250" fill="#D9D2BF" opacity="0.55"/>
+  <line x1="600" y1="80" x2="600" y2="250" stroke="#2E2418" stroke-width="3"/>
+  <line x1="500" y1="200" x2="700" y2="200" stroke="#2E2418" stroke-width="3"/>
+  <!-- twin beds -->
+  <g>
+    <rect x="120" y="600" width="380" height="160" fill="#1A1A1A"/>
+    <rect x="120" y="580" width="380" height="35" fill="#F8F4E9"/>
+    <rect x="140" y="540" width="120" height="60" fill="#F2EDE0"/>
+    <rect x="120" y="615" width="380" height="80" fill="#5B6B4F"/>
+  </g>
+  <g>
+    <rect x="700" y="600" width="380" height="160" fill="#1A1A1A"/>
+    <rect x="700" y="580" width="380" height="35" fill="#F8F4E9"/>
+    <rect x="940" y="540" width="120" height="60" fill="#F2EDE0"/>
+    <rect x="700" y="615" width="380" height="80" fill="#9B7A4A"/>
+  </g>
+  <!-- floor -->
+  <rect x="0" y="760" width="1200" height="140" fill="#2E2418"/>
+  <g stroke="#1A1A1A" stroke-width="1" opacity="0.5">
+    <line x1="0" y1="800" x2="1200" y2="800"/>
+    <line x1="0" y1="840" x2="1200" y2="840"/>
+  </g>
+  <rect width="1200" height="900" fill="url(#warm)"/>
+</svg>

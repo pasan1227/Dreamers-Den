@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="ersky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3D4F40"/>
+      <stop offset="1" stop-color="#1F2D24"/>
+    </linearGradient>
+    <linearGradient id="erfall" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F8F4E9"/>
+      <stop offset="1" stop-color="#D9D2BF"/>
+    </linearGradient>
+    <filter id="erspray">
+      <feGaussianBlur stdDeviation="6"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="900" fill="url(#ersky)"/>
+  <!-- cliff -->
+  <path d="M0 0 L0 900 L380 900 L420 700 L460 500 L500 300 L520 0 Z" fill="#14201A"/>
+  <path d="M1200 0 L1200 900 L820 900 L780 700 L740 500 L700 300 L680 0 Z" fill="#14201A"/>
+  <!-- jungle -->
+  <g fill="#1F2D24">
+    <ellipse cx="100" cy="200" rx="200" ry="160"/>
+    <ellipse cx="1100" cy="180" rx="220" ry="170"/>
+    <ellipse cx="280" cy="120" rx="160" ry="120"/>
+    <ellipse cx="920" cy="100" rx="180" ry="120"/>
+  </g>
+  <!-- waterfall -->
+  <path d="M500 60 L700 60 L720 900 L480 900 Z" fill="url(#erfall)"/>
+  <g stroke="#F8F4E9" stroke-width="3" opacity="0.5">
+    <line x1="520" y1="100" x2="520" y2="900"/>
+    <line x1="560" y1="60" x2="560" y2="900"/>
+    <line x1="600" y1="80" x2="600" y2="900"/>
+    <line x1="640" y1="60" x2="640" y2="900"/>
+    <line x1="680" y1="80" x2="680" y2="900"/>
+  </g>
+  <!-- spray -->
+  <ellipse cx="600" cy="860" rx="280" ry="50" fill="#F2EDE0" opacity="0.7" filter="url(#erspray)"/>
+  <!-- pool -->
+  <ellipse cx="600" cy="900" rx="320" ry="30" fill="#5B6B4F"/>
+</svg>

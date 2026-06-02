@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="g3wall" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#6E5430"/>
+      <stop offset="1" stop-color="#4A3920"/>
+    </linearGradient>
+    <radialGradient id="g3lamp" cx="0.7" cy="0.4" r="0.45">
+      <stop offset="0" stop-color="#B85C2B" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#B85C2B" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1000" height="1000" fill="url(#g3wall)"/>
+  <g stroke="#2E2418" stroke-width="1.5" opacity="0.5">
+    <line x1="0" y1="120" x2="1000" y2="120"/>
+    <line x1="0" y1="240" x2="1000" y2="240"/>
+    <line x1="0" y1="360" x2="1000" y2="360"/>
+    <line x1="0" y1="480" x2="1000" y2="480"/>
+    <line x1="0" y1="600" x2="1000" y2="600"/>
+    <line x1="0" y1="720" x2="1000" y2="720"/>
+  </g>
+  <!-- chair -->
+  <rect x="120" y="540" width="280" height="320" fill="#1A1A1A"/>
+  <rect x="140" y="560" width="240" height="240" fill="#5B6B4F"/>
+  <rect x="140" y="760" width="240" height="40" fill="#3D4F40"/>
+  <!-- floor lamp -->
+  <line x1="500" y1="200" x2="500" y2="700" stroke="#1A1A1A" stroke-width="6"/>
+  <ellipse cx="500" cy="180" rx="60" ry="40" fill="#1A1A1A"/>
+  <ellipse cx="500" cy="200" rx="55" ry="14" fill="#F2EDE0"/>
+  <!-- side table with book -->
+  <rect x="600" y="680" width="220" height="20" fill="#9B7A4A"/>
+  <rect x="640" y="700" width="20" height="160" fill="#9B7A4A"/>
+  <rect x="760" y="700" width="20" height="160" fill="#9B7A4A"/>
+  <rect x="640" y="650" width="120" height="40" fill="#F2EDE0"/>
+  <rect x="650" y="640" width="100" height="20" fill="#B85C2B"/>
+  <!-- floor -->
+  <rect x="0" y="860" width="1000" height="140" fill="#2E2418"/>
+  <rect width="1000" height="1000" fill="url(#g3lamp)"/>
+</svg>

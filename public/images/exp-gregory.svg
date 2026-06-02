@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="egsky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#B85C2B" stop-opacity="0.4"/>
+      <stop offset="0.4" stop-color="#D9D2BF"/>
+      <stop offset="1" stop-color="#F8F4E9"/>
+    </linearGradient>
+    <linearGradient id="eglake" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7C8773"/>
+      <stop offset="1" stop-color="#3D4F40"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#egsky)"/>
+  <circle cx="860" cy="280" r="80" fill="#F2EDE0" opacity="0.8"/>
+  <path d="M0 460 L240 410 L500 450 L760 400 L1020 440 L1200 410 L1200 600 L0 600 Z" fill="#5B6B4F"/>
+  <path d="M0 540 L300 490 L600 520 L900 480 L1200 510 L1200 620 L0 620 Z" fill="#3D4F40"/>
+  <rect x="0" y="620" width="1200" height="280" fill="url(#eglake)"/>
+  <!-- reflections -->
+  <g stroke="#F2EDE0" stroke-width="1" opacity="0.4">
+    <line x1="100" y1="660" x2="200" y2="660"/>
+    <line x1="350" y1="690" x2="480" y2="690"/>
+    <line x1="600" y1="720" x2="780" y2="720"/>
+    <line x1="850" y1="660" x2="980" y2="660"/>
+    <line x1="200" y1="780" x2="350" y2="780"/>
+    <line x1="500" y1="820" x2="700" y2="820"/>
+  </g>
+  <!-- boat -->
+  <g transform="translate(380 700)">
+    <path d="M0 30 Q40 50 120 50 Q200 50 240 30 L220 60 L20 60 Z" fill="#1A1A1A"/>
+    <rect x="118" y="0" width="4" height="30" fill="#1A1A1A"/>
+    <ellipse cx="120" cy="-10" rx="20" ry="6" fill="#9B7A4A"/>
+  </g>
+  <!-- reflection of boat -->
+  <g transform="translate(380 770)" opacity="0.4">
+    <path d="M0 0 Q40 -20 120 -20 Q200 -20 240 0" fill="none" stroke="#1A1A1A" stroke-width="4"/>
+  </g>
+</svg>

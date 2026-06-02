@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#6E5430"/>
+      <stop offset="1" stop-color="#4A3920"/>
+    </linearGradient>
+    <linearGradient id="floor" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#4A3920"/>
+      <stop offset="1" stop-color="#2E2418"/>
+    </linearGradient>
+    <radialGradient id="lamp" cx="0.78" cy="0.45" r="0.4">
+      <stop offset="0" stop-color="#F2EDE0" stop-opacity="0.6"/>
+      <stop offset="1" stop-color="#F2EDE0" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#wall)"/>
+  <g stroke="#2E2418" stroke-width="1.5" opacity="0.5">
+    <line x1="0" y1="120" x2="1200" y2="120"/>
+    <line x1="0" y1="240" x2="1200" y2="240"/>
+    <line x1="0" y1="360" x2="1200" y2="360"/>
+    <line x1="0" y1="480" x2="1200" y2="480"/>
+  </g>
+  <!-- window with mist -->
+  <rect x="120" y="120" width="320" height="380" fill="#1F2D24"/>
+  <rect x="120" y="120" width="320" height="380" fill="#D9D2BF" opacity="0.55"/>
+  <rect x="278" y="120" width="4" height="380" fill="#2E2418"/>
+  <rect x="120" y="308" width="320" height="4" fill="#2E2418"/>
+  <!-- distant ridge through window -->
+  <path d="M120 380 L200 340 L280 360 L360 320 L440 360 L440 500 L120 500 Z" fill="#3D4F40" opacity="0.7"/>
+  <!-- bed -->
+  <rect x="540" y="520" width="540" height="200" fill="#1A1A1A"/>
+  <rect x="540" y="500" width="540" height="40" fill="#F2EDE0"/>
+  <rect x="560" y="460" width="160" height="80" fill="#F8F4E9"/>
+  <rect x="740" y="460" width="160" height="80" fill="#F8F4E9"/>
+  <rect x="540" y="540" width="540" height="120" fill="#9B7A4A"/>
+  <rect x="540" y="540" width="540" height="40" fill="#B85C2B" opacity="0.55"/>
+  <!-- floor -->
+  <rect x="0" y="720" width="1200" height="180" fill="url(#floor)"/>
+  <!-- lamp glow -->
+  <rect width="1200" height="900" fill="url(#lamp)"/>
+  <!-- pendant lamp -->
+  <line x1="970" y1="0" x2="970" y2="280" stroke="#1A1A1A" stroke-width="2"/>
+  <ellipse cx="970" cy="300" rx="40" ry="30" fill="#1A1A1A"/>
+  <ellipse cx="970" cy="305" rx="38" ry="10" fill="#F2EDE0" opacity="0.85"/>
+</svg>

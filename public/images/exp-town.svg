@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="etwsky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7C8773"/>
+      <stop offset="1" stop-color="#D9D2BF"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#etwsky)"/>
+  <!-- distant hills -->
+  <path d="M0 380 L300 320 L600 360 L900 310 L1200 350 L1200 540 L0 540 Z" fill="#5B6B4F" opacity="0.7"/>
+  <!-- colonial building -->
+  <g transform="translate(380 360)">
+    <rect x="0" y="80" width="440" height="180" fill="#B85C2B" opacity="0.85"/>
+    <polygon points="-20,80 460,80 420,30 20,30" fill="#1A1A1A"/>
+    <rect x="40" y="120" width="40" height="80" fill="#F2EDE0"/>
+    <rect x="120" y="120" width="40" height="80" fill="#F2EDE0"/>
+    <rect x="200" y="120" width="40" height="120" fill="#1A1A1A"/>
+    <rect x="280" y="120" width="40" height="80" fill="#F2EDE0"/>
+    <rect x="360" y="120" width="40" height="80" fill="#F2EDE0"/>
+    <rect x="0" y="240" width="440" height="20" fill="#1A1A1A"/>
+    <!-- clock tower -->
+    <rect x="200" y="-60" width="40" height="90" fill="#B85C2B" opacity="0.85"/>
+    <polygon points="195,-60 245,-60 220,-100" fill="#1A1A1A"/>
+    <circle cx="220" cy="-30" r="10" fill="#F2EDE0"/>
+  </g>
+  <!-- path -->
+  <path d="M0 700 Q400 660 600 680 Q800 700 1200 660 L1200 720 Q800 760 600 740 Q400 720 0 760 Z" fill="#9B7A4A"/>
+  <rect x="0" y="760" width="1200" height="140" fill="#5B6B4F"/>
+  <!-- flowers -->
+  <g fill="#B85C2B">
+    <circle cx="80" cy="800" r="6"/>
+    <circle cx="180" cy="820" r="6"/>
+    <circle cx="1000" cy="810" r="6"/>
+    <circle cx="1100" cy="830" r="6"/>
+  </g>
+  <g fill="#F2EDE0">
+    <circle cx="280" cy="810" r="5"/>
+    <circle cx="900" cy="820" r="5"/>
+  </g>
+</svg>
