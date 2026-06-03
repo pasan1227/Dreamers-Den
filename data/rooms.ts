@@ -13,7 +13,6 @@ export const rooms: ReadonlyArray<Room> = [
     capacity: "Up to 6 adults · 3 bedrooms · 1 bathroom · 27 m² + balcony",
     amenities: [
       { label: "Glass-front mountain view", icon: "view" },
-      { label: "Public hot tub", icon: "water" },
       { label: "Fully equipped kitchen", icon: "pan" },
       { label: "Private balcony", icon: "key" },
       { label: "Free private parking", icon: "car" },

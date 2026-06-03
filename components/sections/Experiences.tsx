@@ -123,7 +123,7 @@ function HorizontalRail() {
                 </em>
               </>
             }
-            lede="We'll plan as little or as much as you like — driver, picnic basket, cooking class, dawn alarm. Or skip it all and stay on the balcony."
+            lede="A handful of things to do nearby — tea trails, dawn hikes, lake walks, sleepy cafés. Pick what calls to you, or stay on the balcony."
             tone="dark"
           />
           <p className="mt-8 font-[var(--font-mono)] text-[0.72rem] tracking-[0.28em] uppercase text-[var(--color-amber)]/75 flex items-center gap-3">
