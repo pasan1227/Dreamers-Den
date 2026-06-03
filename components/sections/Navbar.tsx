@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
-import { AframeMark } from "@/components/ui/AframeMark";
+import { Logo } from "@/components/ui/Logo";
 import { useScrolled } from "@/lib/hooks/useScrolled";
 import { site } from "@/data/site";
 
@@ -55,10 +55,10 @@ export function Navbar() {
           className="group flex items-center gap-3 text-[var(--color-cream)]"
           aria-label="Dreamers Den — home"
         >
-          <span className="transition-transform duration-500 group-hover:rotate-[6deg]">
-            <AframeMark size={26} tone="amber" glow />
+          <span className="block transition-transform duration-500 group-hover:scale-[1.04]">
+            <Logo size={48} tone="cream" className="lg:!w-[56px] lg:!h-[56px]" />
           </span>
-          <span className="flex items-baseline gap-3">
+           <span className="flex items-baseline gap-3">
             <span className="display text-2xl lg:text-[1.6rem] leading-none">
               Dreamers Den
             </span>
@@ -155,7 +155,7 @@ export function Navbar() {
         >
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3 text-[var(--color-cream)]">
-              <AframeMark size={26} tone="amber" glow />
+              <Logo size={56} tone="cream" />
               <span className="display text-2xl">Dreamers Den</span>
             </div>
           </div>

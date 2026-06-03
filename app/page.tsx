@@ -16,6 +16,8 @@ import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { SectionRail } from "@/components/ui/SectionRail";
 import { FloatingActions } from "@/components/ui/FloatingActions";
 import { StickyBookingDock } from "@/components/ui/StickyBookingDock";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { faqPageJsonLd } from "@/lib/seo";
 
 const MARQUEE_ITEMS = [
   "06° 56′ N · 80° 47′ E",
@@ -53,6 +55,7 @@ export default function HomePage() {
       <Footer />
       <FloatingActions />
       <StickyBookingDock />
+      <JsonLd id="ld-faq" data={faqPageJsonLd()} />
     </>
   );
 }

@@ -1,6 +1,11 @@
 import type { Metadata, Viewport } from "next";
 import { Fraunces, Geist, Geist_Mono, Sora } from "next/font/google";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { lodgingBusinessJsonLd, websiteJsonLd } from "@/lib/seo";
 import "./globals.css";
+
+const SITE_URL = "https://dreamersdencabana.com";
+const OG_IMAGE = "/images/Images_new/image12.jpeg";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -29,39 +34,84 @@ const sora = Sora({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://dreamersden.lk"),
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "Dreamers Den — An A-frame Cabana in Nuwara Eliya",
+    default: "Dreamers Den — A-frame Cabana in Nuwara Eliya, Sri Lanka",
     template: "%s · Dreamers Den",
   },
   description:
-    "A three-bedroom A-frame cabin on Badulla Road, Nuwara Eliya. Rented as a whole. Honey-timber interior under a soaring apex, fairy-light glow at dusk, polished concrete floors, mountain mist on the doorstep.",
+    "A three-bedroom A-frame cabin on Badulla Road, Nuwara Eliya — rented as a whole for couples and small adult groups. Honey-timber interior, polished concrete floors, fairy-light glow at dusk, mountain mist on the doorstep, six minutes from Gregory Lake.",
+  applicationName: "Dreamers Den",
+  authors: [{ name: "Dreamers Den" }],
+  creator: "Dreamers Den",
+  publisher: "Dreamers Den",
+  category: "travel",
   keywords: [
-    "Nuwara Eliya A-frame",
-    "Sri Lanka cabin",
-    "wood cabana",
-    "tea country stay",
     "Dreamers Den",
-    "Badulla Road",
-    "Gregory Lake",
+    "Dreamers Den Nuwara Eliya",
+    "Nuwara Eliya cabin",
+    "Nuwara Eliya A-frame",
+    "Nuwara Eliya cabana",
+    "Nuwara Eliya accommodation",
+    "Nuwara Eliya holiday rental",
+    "Sri Lanka A-frame cabin",
+    "Sri Lanka tea country stay",
+    "wooden cabin Sri Lanka",
+    "Badulla Road Nuwara Eliya",
+    "Gregory Lake stay",
+    "Hill country accommodation Sri Lanka",
     "Ramboda Falls",
+    "Pedro Tea Estate",
+    "Horton Plains lodging",
   ],
+  alternates: {
+    canonical: SITE_URL,
+  },
+  formatDetection: {
+    telephone: true,
+    address: true,
+    email: true,
+  },
+  icons: {
+    icon: [{ url: "/images/logo.svg", type: "image/svg+xml" }],
+    shortcut: "/images/logo.svg",
+    apple: "/images/logo.svg",
+  },
   openGraph: {
-    title: "Dreamers Den — An A-frame Cabana in Nuwara Eliya",
+    title: "Dreamers Den — A-frame Cabana in Nuwara Eliya, Sri Lanka",
     description:
-      "A three-bedroom A-frame cabin in Sri Lanka's misty tea country. Rented as a whole — for couples and small adult groups.",
-    url: "https://dreamersden.lk",
+      "A three-bedroom A-frame cabin in Sri Lanka's misty tea country, six minutes from Gregory Lake. Rented as a whole — for couples and small adult groups.",
+    url: SITE_URL,
     siteName: "Dreamers Den",
     locale: "en_LK",
     type: "website",
+    images: [
+      {
+        url: OG_IMAGE,
+        width: 1200,
+        height: 1600,
+        alt: "The Dreamers Den A-frame cabana glowing at twilight in the Nuwara Eliya hills",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Dreamers Den — An A-frame Cabana in Nuwara Eliya",
+    title: "Dreamers Den — A-frame Cabana in Nuwara Eliya, Sri Lanka",
     description:
-      "A three-bedroom A-frame cabin in Sri Lanka's misty tea country. Rented as a whole.",
+      "A three-bedroom A-frame cabin in Sri Lanka's misty tea country. Rented as a whole — six minutes from Gregory Lake.",
+    images: [OG_IMAGE],
   },
-  robots: { index: true, follow: true },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
 };
 
 export const viewport: Viewport = {
@@ -93,6 +143,8 @@ export default function RootLayout({
       </head>
       <body className="bg-[var(--color-midnight)] text-[var(--color-cream)] antialiased">
         {children}
+        <JsonLd id="ld-website" data={websiteJsonLd(SITE_URL)} />
+        <JsonLd id="ld-lodging" data={lodgingBusinessJsonLd(SITE_URL)} />
       </body>
     </html>
   );
