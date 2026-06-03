@@ -195,6 +195,10 @@
   .marquee-slow { animation-duration: 80s; }
   .marquee-med  { animation-duration: 55s; }
   .marquee-fast { animation-duration: 32s; }
+  /* Reviews carousel — animation lives on the wrapper so the -50% keyframe
+     translates exactly one full track, looping seamlessly */
+  .marquee-reviews { animation-duration: 20s; }
+  .marquee-reviews:hover { animation-play-state: paused; }
   /* Soft edge fade so items don't snap in/out */
   .marquee-mask {
     -webkit-mask-image: linear-gradient(to right, transparent 0, #000 6%, #000 94%, transparent 100%);

@@ -108,7 +108,7 @@ export function Footer() {
 
         <div className="mt-16 pt-8 border-t border-[var(--color-cream)]/12 flex flex-wrap items-center justify-between gap-4 text-[0.78rem] text-[var(--color-cream)]/55 font-[var(--font-mono)] tracking-[0.18em] uppercase">
           <span>© {year} Dreamers Den · All rights reserved</span>
-          <span>Made by hand in Nuwara Eliya</span>
+          {/* <span>Made by hand in Nuwara Eliya</span> */}
         </div>
       </Container>
     </footer>

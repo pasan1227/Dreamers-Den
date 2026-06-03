@@ -48,6 +48,7 @@ export interface Review {
   readonly location: string;
   readonly type: string;
   readonly rating: 1 | 2 | 3 | 4 | 5;
+  readonly avatarUrl?: string;
 }
 
 export interface ReviewSummary {
