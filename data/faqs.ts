@@ -5,19 +5,19 @@ export const faqs: ReadonlyArray<Faq> = [
     id: "checkin",
     question: "When can we check in — and when do we have to leave?",
     answer:
-      "Check-in is from 2 PM to 11 PM and check-out is between 11 AM and 12 PM. Earlier arrivals or later departures can usually be arranged with a quick message — we'll do our best to make it work around the day's bookings.",
+      "Check-in is from 2 PM and check-out is at 11 AM. Earlier arrivals or later departures can usually be arranged with a quick message — we'll do our best to make it work around the day's bookings.",
+  },
+  {
+    id: "pets",
+    question: "Can we bring our dog?",
+    answer:
+      "We love them, but Dreamers Den is a pet-free cabin — animals aren't allowed on the property. We can point you to a couple of pet-friendly stays in town if you'd like a recommendation.",
   },
   {
     id: "cooking",
     question: "Can we cook?",
     answer:
       "Yes — the kitchen is fully equipped with a stovetop, kettle, fridge, cutlery, plates, and basic spices. The Nuwara Eliya town market is a ten-minute drive for fresh produce, and a traditional Sri Lankan breakfast is available on request.",
-  },
-  {
-    id: "hot-tub",
-    question: "Is the hot tub real?",
-    answer:
-      "A public hot tub sits on the property — warm water under cool mountain mist, the quietest end to a hill-country day. We'll let you know the times it's free to soak so you can plan a long, slow evening.",
   },
   {
     id: "getting-there",
