@@ -12,8 +12,6 @@ export const site: SiteConfig = {
     "https://wa.me/940000000000?text=Hello%20Dreamers%20Den%2C%20I%27d%20like%20to%20book%20a%20stay.",
   bookingUrl: "https://www.facebook.com/profile.php?id=61574596395929",
   email: "stay@dreamersden.lk",
-  pricePerNightUsd: "$64",
-  pricePerNightLkr: "LKR 19,500",
   facebook: "https://www.facebook.com/profile.php?id=61574596395929",
   instagram: "https://instagram.com/dreamersden",
   // Embed centred on 85 Badulla Road, Nuwara Eliya — replace with the exact property pin

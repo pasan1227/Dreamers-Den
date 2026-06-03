@@ -88,28 +88,26 @@ function RoomCard({ room, index }: { room: Room; index: number }) {
         </ul>
 
         <div className="flex flex-wrap items-baseline gap-6 border-t border-[var(--color-cream)]/15 pt-6">
-          <div>
-            <p className="eyebrow text-[var(--color-amber)]/75">From</p>
-            <p className="display text-[1.9rem] leading-none mt-1 text-[var(--color-cream)]">
-              {site.pricePerNightUsd}{" "}
-              <span className="text-[var(--color-cream)]/55 text-[1.1rem]">
-                / {site.pricePerNightLkr}
-              </span>
+          <div className="max-w-[28ch]">
+            <p className="eyebrow text-[var(--color-amber)]/75">Rates</p>
+            <p className="display text-[1.5rem] leading-tight mt-1 text-[var(--color-cream)]">
+              Seasonal — message us.
             </p>
             <p className="text-[0.78rem] text-[var(--color-cream)]/55 mt-1">
-              per night · breakfast on request
+              Tariffs shift with the hills; we&rsquo;ll share dates &amp; rates
+              by reply.
             </p>
           </div>
           <Button
             as="a"
-            href={site.bookingUrl}
+            href={site.whatsappUrl}
             target="_blank"
             rel="noreferrer"
             variant="outline"
             size="md"
             className="ml-auto"
           >
-            Hold a night
+            Ask for rates
           </Button>
         </div>
       </div>

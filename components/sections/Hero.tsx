@@ -329,7 +329,7 @@ export function Hero() {
               ·
             </span>
             <span className="font-[var(--font-mono)] text-[0.7rem] tracking-[0.18em] uppercase text-[var(--color-amber)]/85">
-              From {site.pricePerNightUsd} / night
+              Seasonal rates · message us
             </span>
           </div>
 
