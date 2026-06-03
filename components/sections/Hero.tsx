@@ -193,7 +193,7 @@ export function Hero() {
     >
       <div ref={bg} className="absolute inset-0 -z-10 will-change-transform">
         <Image
-          src="/images/cabana/dreamers-den-nuwara-eliya-pic-1.jpeg"
+          src="/images/cabana/IMG_0152.jpeg"
           alt="The Dreamers Den A-frame cabin at dusk with fairy lights tracing its silhouette"
           fill
           priority
