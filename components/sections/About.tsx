@@ -43,7 +43,7 @@ export function About() {
             data-reveal
           >
             <Image
-              src="/images/cabana/dreamers-den-nuwara-eliya-pic-13.jpeg"
+              src="/images/cabana/dreamers-den-nuwara-eliya-pic-1.jpeg"
               alt="The Dreamers Den A-frame cabin in daylight, glass facade reflecting the sky"
               fill
               sizes="(max-width: 1024px) 100vw, 60vw"
