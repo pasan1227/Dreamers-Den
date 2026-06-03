@@ -10,7 +10,7 @@ export const site: SiteConfig = {
   whatsapp: "+94 76 210 2942",
   whatsappUrl:
     "https://wa.me/94762102942?text=Hello%20Dreamers%20Den%2C%20I%27d%20like%20to%20book%20a%20stay.",
-  bookingUrl: "https://www.facebook.com/p/Dreamers-Den-Cabana-61574596395929/",
+  bookingUrl: "https://www.booking.com/hotel/lk/dreamers-den-nuwara-eliya5.html",
   email: "askdreamsden@gmail.com",
   facebook: "https://www.facebook.com/p/Dreamers-Den-Cabana-61574596395929/",
   instagram: "https://www.instagram.com/dreamers_.den/",
