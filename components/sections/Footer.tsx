@@ -1,5 +1,5 @@
 import { Container } from "@/components/ui/Container";
-import { AframeMark } from "@/components/ui/AframeMark";
+import { Logo } from "@/components/ui/Logo";
 import { site } from "@/data/site";
 
 const COLUMNS: ReadonlyArray<{
@@ -33,10 +33,8 @@ export function Footer() {
       <Container className="py-20 lg:py-24">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           <div className="lg:col-span-5 flex flex-col gap-6">
-            <div className="flex items-center gap-3">
-              <AframeMark size={26} tone="amber" glow />
-              <p className="eyebrow text-[var(--color-amber)]/80">{site.established}</p>
-            </div>
+            <Logo size={140} tone="cream" />
+            <p className="eyebrow text-[var(--color-amber)]/80">{site.established}</p>
             <p className="display text-[clamp(2.5rem,5vw,3.75rem)] text-[var(--color-cream)] leading-[0.95]">
               Dreamers{" "}
               <em className="not-italic font-light italic text-[var(--color-amber)]">
