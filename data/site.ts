@@ -14,10 +14,9 @@ export const site: SiteConfig = {
   email: "stay@dreamersden.lk",
   facebook: "https://www.facebook.com/profile.php?id=61574596395929",
   instagram: "https://instagram.com/dreamersden",
-  // Embed centred on 85 Badulla Road, Nuwara Eliya — replace with the exact property pin
   mapEmbed:
-    "https://www.google.com/maps?q=85+Badulla+Road+Nuwara+Eliya&output=embed",
-  coords: { lat: 6.9646, lng: 80.7855 },
+    "https://maps.google.com/maps?q=Dreamers+Den,+Nuwara+Eliya&ll=6.9505542,80.7892829&z=16&output=embed",
+  coords: { lat: 6.9505542, lng: 80.7892829 },
   nav: [
     { label: "Story", href: "#about" },
     { label: "The Cabana", href: "#rooms" },
