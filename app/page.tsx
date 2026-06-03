@@ -11,6 +11,11 @@ import { FAQ } from "@/components/sections/FAQ";
 import { BookingCTA } from "@/components/sections/BookingCTA";
 import { Footer } from "@/components/sections/Footer";
 import { Marquee } from "@/components/ui/Marquee";
+import { PageIntro } from "@/components/ui/PageIntro";
+import { ScrollProgress } from "@/components/ui/ScrollProgress";
+import { SectionRail } from "@/components/ui/SectionRail";
+import { FloatingActions } from "@/components/ui/FloatingActions";
+import { StickyBookingDock } from "@/components/ui/StickyBookingDock";
 
 const MARQUEE_ITEMS = [
   "06° 56′ N · 80° 47′ E",
@@ -28,6 +33,9 @@ const MARQUEE_ITEMS = [
 export default function HomePage() {
   return (
     <>
+      <PageIntro />
+      <ScrollProgress />
+      <SectionRail />
       <Navbar />
       <main>
         <Hero />
@@ -43,6 +51,8 @@ export default function HomePage() {
         <BookingCTA />
       </main>
       <Footer />
+      <FloatingActions />
+      <StickyBookingDock />
     </>
   );
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Container } from "@/components/ui/Container";
@@ -10,15 +10,43 @@ import { AframeMark } from "@/components/ui/AframeMark";
 import { site } from "@/data/site";
 import { SECTION_IDS } from "@/lib/constants";
 
+interface Ember {
+  readonly left: string;
+  readonly delay: string;
+  readonly duration: string;
+  readonly drift: string;
+  readonly size: string;
+}
+
 function shouldReduce(): boolean {
-  if (typeof window === "undefined") return false;
-  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (typeof globalThis.window === "undefined") return false;
+  return globalThis.matchMedia("(prefers-reduced-motion: reduce)").matches;
+}
+
+// Deterministic-ish ember placement so SSR/CSR match.
+function makeEmbers(n: number): ReadonlyArray<Ember> {
+  const out: Ember[] = [];
+  for (let i = 0; i < n; i++) {
+    const seed = (i * 9301 + 49297) % 233280;
+    const r = seed / 233280;
+    const r2 = ((i + 1) * 7853) % 100 / 100;
+    const r3 = ((i + 2) * 6379) % 100 / 100;
+    out.push({
+      left: `${(r * 96 + 2).toFixed(2)}%`,
+      delay: `${(r2 * 14).toFixed(2)}s`,
+      duration: `${(14 + r3 * 12).toFixed(2)}s`,
+      drift: `${(r2 * 14 - 7).toFixed(2)}vw`,
+      size: `${(1.6 + r * 1.6).toFixed(2)}px`,
+    });
+  }
+  return out;
 }
 
 export function Hero() {
   const root = useRef<HTMLElement | null>(null);
   const bg = useRef<HTMLDivElement | null>(null);
   const glow = useRef<HTMLDivElement | null>(null);
+  const embers = useMemo(() => makeEmbers(22), []);
 
   useEffect(() => {
     if (!root.current) return;
@@ -26,8 +54,8 @@ export function Hero() {
 
     const reduce = shouldReduce();
     const isFinePointer =
-      typeof window !== "undefined" &&
-      window.matchMedia("(pointer: fine)").matches;
+      typeof globalThis.window !== "undefined" &&
+      globalThis.matchMedia("(pointer: fine)").matches;
 
     const cleanups: Array<() => void> = [];
 
@@ -59,7 +87,10 @@ export function Hero() {
         gsap.set("[data-hero]", { opacity: 1, y: 0 });
         return;
       }
-      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+      const tl = gsap.timeline({
+        delay: 0.15,
+        defaults: { ease: "power3.out" },
+      });
       tl.fromTo(
         "[data-hero-eyebrow]",
         { y: 24, opacity: 0 },
@@ -67,35 +98,82 @@ export function Hero() {
       )
         .fromTo(
           "[data-hero-title] .word",
-          { y: 80, opacity: 0 },
-          { y: 0, opacity: 1, duration: 1.2, stagger: 0.08 },
+          { y: 120, opacity: 0, rotateX: 18 },
+          {
+            y: 0,
+            opacity: 1,
+            rotateX: 0,
+            duration: 1.35,
+            stagger: 0.09,
+            ease: "expo.out",
+          },
           "-=0.6",
         )
         .fromTo(
           "[data-hero-lede]",
           { y: 24, opacity: 0 },
           { y: 0, opacity: 1, duration: 1 },
+          "-=0.85",
+        )
+        .fromTo(
+          "[data-hero-status]",
+          { y: 14, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.7 },
           "-=0.7",
         )
         .fromTo(
           "[data-hero-cta]",
           { y: 20, opacity: 0 },
           { y: 0, opacity: 1, duration: 0.9, stagger: 0.1 },
-          "-=0.7",
+          "-=0.5",
         )
         .fromTo(
           "[data-hero-mark]",
           { opacity: 0 },
           { opacity: 1, duration: 1.4 },
           "-=0.8",
+        )
+        .fromTo(
+          "[data-hero-foot] > *",
+          { y: 16, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.8, stagger: 0.08 },
+          "-=1",
         );
 
       if (bg.current) {
+        // Initial zoom-out on enter
         gsap.fromTo(
           bg.current,
-          { scale: 1.12 },
-          { scale: 1, duration: 2.6, ease: "power2.out" },
+          { scale: 1.18 },
+          { scale: 1.04, duration: 2.8, ease: "power2.out" },
         );
+
+        // Scroll-driven parallax: drift the background down/up while
+        // the hero is in view.
+        gsap.to(bg.current, {
+          yPercent: 18,
+          scale: 1.1,
+          ease: "none",
+          scrollTrigger: {
+            trigger: root.current,
+            start: "top top",
+            end: "bottom top",
+            scrub: 0.6,
+          },
+        });
+
+        // Foreground content drifts up subtly for depth
+        gsap.to("[data-hero-fg]", {
+          yPercent: -10,
+          opacity: 0.6,
+          ease: "none",
+          scrollTrigger: {
+            trigger: root.current,
+            start: "top top",
+            end: "bottom top",
+            scrub: 0.6,
+          },
+        });
       }
     }, root);
 
@@ -122,25 +200,55 @@ export function Hero() {
           sizes="100vw"
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[var(--color-midnight-deep)]/60 via-[var(--color-midnight)]/30 to-[var(--color-midnight-deep)]/90" />
+        <div className="absolute inset-0 bg-linear-to-b from-[var(--color-midnight-deep)]/65 via-[var(--color-midnight)]/30 to-[var(--color-midnight-deep)]/95" />
         {/* amber edge glow */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
             background:
-              "radial-gradient(60% 50% at 50% 60%, rgba(232,161,75,0.10), transparent 70%)",
+              "radial-gradient(60% 50% at 50% 60%, rgba(232,161,75,0.12), transparent 70%)",
           }}
         />
+        {/* vignette */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(120% 100% at 50% 40%, transparent 55%, rgba(6,8,15,0.55) 100%)",
+          }}
+        />
+      </div>
+
+      {/* Ambient embers drifting upward — fine-grained motion that reads as "alive". */}
+      <div
+        aria-hidden
+        className="absolute inset-0 -z-[5] overflow-hidden pointer-events-none motion-reduce:hidden"
+      >
+        {embers.map((e, i) => (
+          <span
+            key={i}
+            className="ember"
+            style={{
+              left: e.left,
+              bottom: "-10px",
+              width: e.size,
+              height: e.size,
+              animationDelay: e.delay,
+              animationDuration: e.duration,
+              ["--dx" as string]: e.drift,
+            }}
+          />
+        ))}
       </div>
 
       {/* cursor-follow amber halo (fine pointer only; opacity controlled by JS) */}
       <div
         ref={glow}
         aria-hidden
-        className="hero-glow pointer-events-none absolute left-0 top-0 z-0 h-[520px] w-[520px] -translate-x-1/2 -translate-y-1/2 opacity-0 mix-blend-screen"
+        className="hero-glow pointer-events-none absolute left-0 top-0 z-0 h-[560px] w-[560px] -translate-x-1/2 -translate-y-1/2 opacity-0 mix-blend-screen"
         style={{
           background:
-            "radial-gradient(closest-side, rgba(246,184,99,0.32), rgba(232,161,75,0.14) 38%, transparent 70%)",
+            "radial-gradient(closest-side, rgba(246,184,99,0.36), rgba(232,161,75,0.16) 38%, transparent 70%)",
         }}
       />
 
@@ -160,7 +268,7 @@ export function Hero() {
       </div>
 
       <Container className="relative flex-1 flex flex-col justify-end pt-32 pb-20 lg:pt-40 lg:pb-28">
-        <div className="max-w-[1100px]">
+        <div data-hero-fg className="max-w-[1100px] will-change-transform">
           <p
             data-hero
             data-hero-eyebrow
@@ -175,17 +283,18 @@ export function Hero() {
             data-hero
             data-hero-title
             className="display text-[var(--color-cream)] text-[clamp(3.5rem,12vw,12rem)]"
+            style={{ perspective: "1000px" }}
           >
             {words.map((w, i) => (
               <span
                 key={i}
                 className="inline-block overflow-hidden align-bottom mr-[0.18em] last:mr-0"
               >
-                <span className="word inline-block">
+                <span className="word inline-block will-change-transform">
                   {i === 0 ? (
                     w
                   ) : (
-                    <em className="not-italic font-light italic text-[var(--color-amber)]">
+                    <em className="font-light italic text-[var(--color-amber)]">
                       {w}
                     </em>
                   )}
@@ -204,7 +313,27 @@ export function Hero() {
             whole.
           </p>
 
-          <div className="mt-12 flex flex-wrap items-center gap-4">
+          <div
+            data-hero
+            data-hero-status
+            className="mt-10 inline-flex items-center gap-3 rounded-full border border-[var(--color-cream)]/15 bg-[var(--color-midnight)]/55 px-4 py-2 backdrop-blur-sm"
+          >
+            <span
+              aria-hidden
+              className="status-dot inline-block h-2 w-2 rounded-full bg-[#A7D382]"
+            />
+            <span className="eyebrow text-[var(--color-cream)]/85">
+              Open this season
+            </span>
+            <span aria-hidden className="text-[var(--color-cream)]/30">
+              ·
+            </span>
+            <span className="font-[var(--font-mono)] text-[0.7rem] tracking-[0.18em] uppercase text-[var(--color-amber)]/85">
+              From {site.pricePerNightUsd} / night
+            </span>
+          </div>
+
+          <div className="mt-8 flex flex-wrap items-center gap-4">
             <Button
               data-hero
               data-hero-cta
@@ -231,14 +360,22 @@ export function Hero() {
         </div>
 
         <div
-          data-hero
-          data-hero-cta
+          data-hero-foot
           className="mt-20 flex items-end justify-between text-[var(--color-cream)]/65"
         >
-          <div className="flex items-center gap-3">
-            <span className="block h-px w-10 bg-[var(--color-amber)]/60" />
+          <a
+            href={`#${SECTION_IDS.about}`}
+            className="group flex items-center gap-3 text-[var(--color-cream)]/65 hover:text-[var(--color-amber)] transition-colors"
+            aria-label="Scroll to next section"
+          >
+            <span className="relative block h-10 w-5 rounded-full border border-[var(--color-amber)]/40 overflow-hidden">
+              <span
+                aria-hidden
+                className="scroll-cue absolute left-1/2 top-2 -translate-x-1/2 h-1.5 w-1.5 rounded-full bg-[var(--color-amber)]"
+              />
+            </span>
             <span className="eyebrow">Scroll to wander</span>
-          </div>
+          </a>
           <div className="hidden sm:flex items-center gap-6 font-[var(--font-mono)] text-[0.7rem] tracking-[0.25em] uppercase">
             <span>16°C · Mist</span>
             <span aria-hidden>·</span>

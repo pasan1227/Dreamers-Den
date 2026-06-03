@@ -80,6 +80,17 @@ export default function RootLayout({
       lang="en"
       className={`${fraunces.variable} ${geist.variable} ${geistMono.variable} ${sora.variable}`}
     >
+      <head>
+        {/* Pre-paint: hide the page-intro for repeat visitors / reduced-motion
+            users so they never see the curtain flash. Inline so it runs
+            before first paint. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "try{var s=sessionStorage.getItem('dd-intro-seen-v1')==='1';var r=matchMedia('(prefers-reduced-motion: reduce)').matches;if(s||r){var st=document.createElement('style');st.textContent='.page-intro{display:none!important}';document.head.appendChild(st)}}catch(e){}",
+          }}
+        />
+      </head>
       <body className="bg-[var(--color-midnight)] text-[var(--color-cream)] antialiased">
         {children}
       </body>
