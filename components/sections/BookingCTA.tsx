@@ -113,9 +113,9 @@ export function BookingCTA() {
             </dd>
           </div>
           <div>
-            <dt className="eyebrow text-[var(--color-amber)]/75">From</dt>
+            <dt className="eyebrow text-[var(--color-amber)]/75">Rates</dt>
             <dd className="font-[var(--font-display)] text-[1.2rem] mt-2 text-[var(--color-cream)]">
-              {site.pricePerNightUsd} · {site.pricePerNightLkr} / night
+              Seasonal — message for a quote
             </dd>
           </div>
         </dl>

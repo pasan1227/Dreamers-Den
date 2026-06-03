@@ -87,8 +87,6 @@ export interface SiteConfig {
   readonly whatsappUrl: string;
   readonly bookingUrl: string;
   readonly email: string;
-  readonly pricePerNightUsd: string;
-  readonly pricePerNightLkr: string;
   readonly facebook: string;
   readonly instagram: string;
   readonly mapEmbed: string;

@@ -32,8 +32,11 @@ const LAYOUTS: ReadonlyArray<Layout> = [
   { column: "left",   aspect: "aspect-[16/10]", rotateDeg:  0.8, offsetPx: 60,  captionSide: "right",                          tag: "IV. inside" },
   { column: "middle", aspect: "aspect-[3/4]",   rotateDeg:  1.5, offsetPx: 48,  captionSide: "right", tape: "top-right", tag: "V.  apex"   },
   { column: "right",  aspect: "aspect-square",  rotateDeg: -0.7, offsetPx: 56,  captionSide: "right",                          tag: "VI. bedroom" },
-  { column: "left",   aspect: "aspect-square",  rotateDeg:  1.3, offsetPx: 56,  captionSide: "left",                          tag: "VII.bath"   },
+  { column: "left",   aspect: "aspect-[3/4]",   rotateDeg:  1.3, offsetPx: 56,  captionSide: "left",                          tag: "VII.daylight" },
   { column: "right",  aspect: "aspect-[3/4]",   rotateDeg: -1.1, offsetPx: 48,  captionSide: "right", tape: "top-left",  tag: "VIII.stair" },
+  { column: "middle", aspect: "aspect-[3/4]",   rotateDeg: -1.4, offsetPx: 72,  captionSide: "left",  tape: "top-left",  tag: "IX. dusk"   },
+  { column: "left",   aspect: "aspect-square",  rotateDeg: -0.9, offsetPx: 40,  captionSide: "right",                          tag: "X.  lantern" },
+  { column: "right",  aspect: "aspect-[16/10]", rotateDeg:  1.7, offsetPx: 56,  captionSide: "left",  tape: "top-right", tag: "XI. quiet"  },
 ];
 
 const SIZES = "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw";
