@@ -24,16 +24,37 @@ function RoomCard({ room, index }: { room: Room; index: number }) {
       data-reveal
     >
       <div className={`lg:col-span-6 ${colImage}`}>
-        <div className="relative aspect-[4/5] overflow-hidden bg-[var(--color-midnight-deep)]">
+        <div className="group/img relative aspect-[4/5] overflow-hidden bg-[var(--color-midnight-deep)] transition-shadow duration-700 ease-out hover:shadow-[0_50px_90px_-40px_rgba(0,0,0,0.85),0_0_0_1px_rgba(232,161,75,0.18)]">
           <Image
             src={room.image}
             alt={room.imageAlt}
             fill
             sizes="(max-width: 1024px) 100vw, 50vw"
-            className="object-cover transition-transform duration-[1.6s] ease-out hover:scale-[1.04]"
+            className="object-cover transition-transform duration-[1.6s] ease-out group-hover/img:scale-[1.05]"
           />
-          <span className="absolute top-5 left-5 eyebrow text-[var(--color-cream)] bg-[var(--color-midnight)]/65 backdrop-blur px-3 py-1.5 rounded-full">
+          {/* slow lower-edge wash that warms on hover */}
+          <span
+            aria-hidden
+            className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-linear-to-t from-[var(--color-midnight-deep)]/85 via-[var(--color-midnight-deep)]/30 to-transparent"
+          />
+          <span
+            aria-hidden
+            className="pointer-events-none absolute inset-0 opacity-0 group-hover/img:opacity-100 transition-opacity duration-700"
+            style={{
+              background:
+                "radial-gradient(60% 50% at 50% 80%, rgba(232,161,75,0.18), transparent 70%)",
+            }}
+          />
+          <span className="absolute top-5 left-5 eyebrow text-[var(--color-cream)] bg-[var(--color-midnight)]/65 backdrop-blur-sm px-3 py-1.5 rounded-full">
             01 / 01
+          </span>
+          <span className="absolute bottom-5 left-5 right-5 flex items-center justify-between text-[var(--color-cream)]/85">
+            <span className="font-[var(--font-mono)] text-[0.68rem] tracking-[0.22em] uppercase">
+              {room.tagline}
+            </span>
+            <span className="inline-flex items-center gap-1 eyebrow text-[var(--color-amber)]/85 translate-x-2 opacity-0 transition-all duration-500 group-hover/img:translate-x-0 group-hover/img:opacity-100">
+              View <span aria-hidden>→</span>
+            </span>
           </span>
         </div>
       </div>

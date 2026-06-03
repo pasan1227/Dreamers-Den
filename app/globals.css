@@ -113,6 +113,57 @@
     font-weight: 500;
   }
 
+  /* Button shimmer sheen */
+  @keyframes btnSheen {
+    0%   { transform: translateX(0)    skewX(-12deg); }
+    100% { transform: translateX(360%) skewX(-12deg); }
+  }
+
+  /* Ambient amber embers drifting in the hero */
+  @keyframes emberDrift {
+    0%   { transform: translate3d(0, 0, 0)         scale(0.6); opacity: 0; }
+    15%  { opacity: 0.85; }
+    100% { transform: translate3d(var(--dx, 8vw), -110vh, 0) scale(1); opacity: 0; }
+  }
+  .ember {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    border-radius: 9999px;
+    background: var(--color-amber-bright);
+    box-shadow:
+      0 0 6px rgba(246, 184, 99, 0.85),
+      0 0 16px rgba(232, 161, 75, 0.45);
+    will-change: transform, opacity;
+    animation: emberDrift linear infinite;
+  }
+
+  /* Soft pulse for the "available" status dot */
+  @keyframes statusPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(167, 211, 130, 0.7); }
+    70%      { box-shadow: 0 0 0 8px rgba(167, 211, 130, 0); }
+  }
+  .status-dot {
+    animation: statusPulse 2.4s ease-out infinite;
+  }
+
+  /* Scroll cue chevron drop */
+  @keyframes scrollCue {
+    0%   { transform: translateY(-4px); opacity: 0.2; }
+    50%  { transform: translateY(2px);  opacity: 1; }
+    100% { transform: translateY(8px);  opacity: 0; }
+  }
+  .scroll-cue {
+    animation: scrollCue 2.2s ease-in-out infinite;
+  }
+
+  /* Glassy frosted surface used sparingly (nav scroll, dock) */
+  .frosted {
+    background-color: color-mix(in oklab, var(--color-midnight) 70%, transparent);
+    backdrop-filter: saturate(140%) blur(16px);
+    -webkit-backdrop-filter: saturate(140%) blur(16px);
+  }
+
   /* Subtle film grain for warm-low-light feel */
   .grain::before {
     content: "";
