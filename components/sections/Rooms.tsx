@@ -97,7 +97,6 @@ function RoomCard({ room, index }: { room: Room; index: number }) {
               Tariffs shift with the hills; we&rsquo;ll share dates &amp; rates
               by reply.
             </p>
-          </div>
           <Button
             as="a"
             href={site.whatsappUrl}
@@ -105,10 +104,11 @@ function RoomCard({ room, index }: { room: Room; index: number }) {
             rel="noreferrer"
             variant="outline"
             size="md"
-            className="ml-auto"
+            className="ml-auto mt-3"
           >
             Ask for rates
           </Button>
+          </div>
         </div>
       </div>
     </article>
