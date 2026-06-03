@@ -1,7 +1,7 @@
 import type { Review, ReviewSummary } from "@/lib/types";
 
 export const reviewSummary: ReviewSummary = {
-  score: "9.4",
+  score: "4.7",
   label: "Superb",
   count: 6,
   source: "Verified",
